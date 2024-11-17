@@ -1,0 +1,9 @@
+{
+  "name": "picpay-simplified",
+  "version": "1.0.0",
+  "description": "Simplified version of PicPay to perform transaction between users",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
