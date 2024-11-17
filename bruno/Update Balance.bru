@@ -1,0 +1,17 @@
+meta {
+  name: Update Balance
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{base_url}}/users/3/balance
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "amount": 758.57
+  }
+}

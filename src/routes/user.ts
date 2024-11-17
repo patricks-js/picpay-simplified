@@ -66,4 +66,51 @@ export async function userRoutes(app: FastifyInstance) {
       return reply.status(201).send({ user });
     },
   );
+
+  app.withTypeProvider<ZodTypeProvider>().patch(
+    "/:userId/balance",
+    {
+      schema: {
+        body: z.object({
+          amount: z.number().positive(),
+        }),
+        params: z.object({
+          userId: z.coerce.number().int().positive(),
+        }),
+      },
+    },
+    async (request, reply) => {
+      const { userId } = request.params;
+      const { amount } = request.body;
+
+      const [user] = await db
+        .select({
+          balance: users.balance,
+        })
+        .from(users)
+        .where(eq(users.id, userId));
+
+      if (!user) {
+        return reply.status(404).send({
+          statusCode: 404,
+          error: "NotFoundError",
+          message: "User not found.",
+        });
+      }
+
+      const updatedBalance = Number(user.balance) + amount;
+
+      const [userUpdated] = await db
+        .update(users)
+        .set({ balance: String(updatedBalance) })
+        .where(eq(users.id, userId))
+        .returning({
+          balance: users.balance,
+        });
+
+      return {
+        balance: userUpdated?.balance,
+      };
+    },
+  );
 }
