@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import bcrypt from "bcryptjs";
-import { eq, or } from "drizzle-orm";
+import { eq, or, sql } from "drizzle-orm";
 import type { FastifyInstance } from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
@@ -113,4 +113,20 @@ export async function userRoutes(app: FastifyInstance) {
       };
     },
   );
+
+  app.get("/", async () => {
+    const returnedUsers = await db
+      .select({
+        id: users.id,
+        fullName: sql /*sql*/`first_name || ' ' || surname`,
+        email: users.email,
+        balance: users.balance,
+        role: users.role,
+      })
+      .from(users);
+
+    return {
+      users: returnedUsers,
+    };
+  });
 }
