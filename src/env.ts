@@ -1,4 +1,9 @@
+import { config } from "dotenv";
 import { z } from "zod";
+
+config({
+  path: ".env.local",
+});
 
 const envSchema = z.object({
   POSTGRESQL_URL: z.string().url().startsWith("postgresql://"),

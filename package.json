@@ -9,9 +9,13 @@
     "start": "node dist/server.js",
     "dev": "tsx watch src/server.ts",
     "lint": "biome lint .",
-    "format": "biome check --write ."
+    "format": "biome check --write .",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "dotenv": "16.4.5",
     "drizzle-orm": "0.36.3",
     "fastify": "5.1.0",
     "postgres": "3.4.5",
