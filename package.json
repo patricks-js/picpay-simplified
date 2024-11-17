@@ -15,14 +15,17 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "bcryptjs": "2.4.3",
     "dotenv": "16.4.5",
     "drizzle-orm": "0.36.3",
     "fastify": "5.1.0",
+    "fastify-type-provider-zod": "4.0.2",
     "postgres": "3.4.5",
     "zod": "3.23.8"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@types/bcryptjs": "2.4.6",
     "@types/node": "22.9.0",
     "drizzle-kit": "0.28.1",
     "tsup": "8.3.5",
