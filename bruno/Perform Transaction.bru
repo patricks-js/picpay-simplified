@@ -1,0 +1,19 @@
+meta {
+  name: Perform Transaction
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/transactions/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "amount": 25.34,
+    "payerId": 2,
+    "payeeId": 4
+  }
+}
