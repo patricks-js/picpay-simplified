@@ -109,3 +109,11 @@ To see the code coverage
 ```bash
 pnpm test:coverage
 ```
+
+## Proposed Improvements
+
+- Error handling with better messages and semantic status code
+- Enhance monitoring with detailed transaction metrics
+- Implement API rate limiting and request throttling for security
+- Introduce advanced caching strategies for high-volume transactions
+- Optimize database queries with indexes and partitioning.

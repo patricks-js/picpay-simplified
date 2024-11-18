@@ -109,3 +109,11 @@ Para ver a cobertura de código
 ```bash
 pnpm test:coverage
 ```
+
+## Propostas de Melhoria
+
+- Tratamento de erros com mensagens melhores e status code semânticos
+- Aprimoramento do monitoramento com métricas detalhadas das transações
+- Implementar limitação de taxa de API e limitação de solicitações para segurança
+- Introduzir estratégias avançadas de cache para transações de alto volume
+- Otimizar as consultas ao banco de dados com índices e particionamento.
