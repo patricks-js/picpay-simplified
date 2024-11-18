@@ -33,6 +33,18 @@ Each user has a wallet for transactions. The system ensures security, validation
 - Transfers must be authorized with an [external authorization service](https://util.devi.tools/api/v2/authorize) (GET)
 - Users should receive a notification when a transfer is completed with a [external notification service](https://util.devi.tools/api/v1/notify) (POST)
 
+### Requirements
+
+- [x] User can create an account as customer or merchant
+- [ ] User can authenticate with email & password
+- [x] Transaction history is available for all users
+- [x] Customers can transfer money to other users (customers or merchants)
+- [x] Transfers are restricted to customers with sufficient balance
+- [ ] All transfers must be authorized by an external service
+- [x] Merchants are limited to receiving transfers only
+- [ ] Users should receive notifications (e.g., email or SMS) upon receiving a transfer
+- [ ] Transfers must be reversible in case of any failure
+
 ## Setup Instructions
 
 ### Prerequisites

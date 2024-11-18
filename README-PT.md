@@ -33,6 +33,18 @@ Cada usuário tem uma carteira para transações. O sistema deve garantir segura
 - Transferências devem ser autorizadas previamente com um [serviço de autorização externo](https://util.devi.tools/api/v2/authorize) (GET)
 - Usuários devem receber uma notificação quando a transferência é completa, usando um [serviço de notificação externo](https://util.devi.tools/api/v1/notify) (POST)
 
+### Requisitos
+
+- [x] O usuário pode criar uma conta como cliente ou lojista
+- [ ] O usuário pode autenticar-se com e-mail e senha
+- [x] O histórico de transações está disponível para todos os usuários
+- [x] Clientes podem transferir dinheiro para outros usuários (clientes ou lojistas)
+- [x] Transferências são restritas a clientes com saldo suficiente
+- [ ] Todas as transferências devem ser autorizadas por um serviço externo
+- [x] Lojistas são limitados a apenas receber transferências
+- [ ] Usuários devem receber notificações (e.g., e-mail ou SMS) ao receber uma transferência
+- [ ] Transferências devem ser reversíveis em caso de falha
+
 ## Instruções de Configuração
 
 ### Pré-requisitos
