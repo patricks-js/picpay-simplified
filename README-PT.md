@@ -40,10 +40,10 @@ Cada usuário tem uma carteira para transações. O sistema deve garantir segura
 - [x] O histórico de transações está disponível para todos os usuários
 - [x] Clientes podem transferir dinheiro para outros usuários (clientes ou lojistas)
 - [x] Transferências são restritas a clientes com saldo suficiente
-- [ ] Todas as transferências devem ser autorizadas por um serviço externo
+- [x] Todas as transferências devem ser autorizadas por um serviço externo
 - [x] Lojistas são limitados a apenas receber transferências
 - [ ] Usuários devem receber notificações (e.g., e-mail ou SMS) ao receber uma transferência
-- [ ] Transferências devem ser reversíveis em caso de falha
+- [x] Transferências devem ser reversíveis em caso de falha
 
 ## Instruções de Configuração
 

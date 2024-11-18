@@ -71,33 +71,60 @@ export async function transactionRoutes(app: FastifyInstance) {
         });
       }
 
-      const extractBalanceFromPayer = Number(payer.balance) - amount;
+      const transactionSuccess = await db.transaction(async (tx) => {
+        const payerBalance = Number(payer.balance) - amount;
+        const payeeBalance = Number(payee.balance) + amount;
 
-      await db
-        .update(users)
-        .set({ balance: String(extractBalanceFromPayer) })
-        .where(eq(users.id, payerId));
+        await tx
+          .update(users)
+          .set({ balance: String(payerBalance) })
+          .where(eq(users.id, payerId));
 
-      const increaseBalanceFromPayee = Number(payee.balance) + amount;
+        await tx
+          .update(users)
+          .set({ balance: String(payeeBalance) })
+          .where(eq(users.id, payeeId));
 
-      await db
-        .update(users)
-        .set({ balance: String(increaseBalanceFromPayee) })
-        .where(eq(users.id, payeeId));
+        const response = await fetch(
+          "https://util.devi.tools/api/v2/authorize",
+        );
 
-      const [transaction] = await db
-        .insert(transactions)
-        .values({
-          amount: String(amount),
-          payerId,
-          payeeId,
-        })
-        .returning({
-          transactionId: transactions.id,
+        type ValidationServiceResponse = {
+          status: "success" | "fail";
+          data: { authorization: boolean };
+        };
+
+        const { data, status } =
+          (await response.json()) as ValidationServiceResponse;
+
+        if (status === "fail" || data.authorization === false) {
+          tx.rollback();
+        }
+
+        const [transaction] = await db
+          .insert(transactions)
+          .values({
+            amount: String(amount),
+            payerId,
+            payeeId,
+          })
+          .returning({
+            transactionId: transactions.id,
+          });
+
+        return transaction;
+      });
+
+      if (!transactionSuccess) {
+        return reply.status(502).send({
+          statusCode: 502,
+          error: "BadGatewayError",
+          message: "Transaction validation is temporally unavailable.",
         });
+      }
 
       return {
-        transactionId: transaction?.transactionId,
+        transactionId: transactionSuccess.transactionId,
         payer: {
           id: payerId,
           fullName: payer.fullName,

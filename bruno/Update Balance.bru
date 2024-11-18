@@ -7,7 +7,11 @@ meta {
 patch {
   url: {{base_url}}/users/2/balance
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbE5hbWUiOiJQYXRyaWNrIExpbm8iLCJlbWFpbCI6InBhdHJpY2syQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTczMTk2NzAxMCwiaXNzIjoidXJuOmV4YW1wbGU6aXNzdWVyIiwiYXVkIjoidXJuOmV4YW1wbGU6YXVkaWVuY2UiLCJleHAiOjE3MzE5Njc5MTB9.Dt-fNGo62riyWBJ11BSxm5wJgqR5MQbs2lnjXNxFU_4
 }
 
 body:json {

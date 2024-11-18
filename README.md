@@ -40,10 +40,10 @@ Each user has a wallet for transactions. The system ensures security, validation
 - [x] Transaction history is available for all users
 - [x] Customers can transfer money to other users (customers or merchants)
 - [x] Transfers are restricted to customers with sufficient balance
-- [ ] All transfers must be authorized by an external service
+- [x] All transfers must be authorized by an external service
 - [x] Merchants are limited to receiving transfers only
 - [ ] Users should receive notifications (e.g., email or SMS) upon receiving a transfer
-- [ ] Transfers must be reversible in case of any failure
+- [x] Transfers must be reversible in case of any failure
 
 ## Setup Instructions
 
