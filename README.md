@@ -95,3 +95,17 @@ Each user has a wallet for transactions. The system ensures security, validation
 
 2. The API will be accessible at <http://localhost:3333>
 3. The API documentation (swagger) will be accessible at <http://localhost:3333/api/docs>
+
+### Running Tests
+
+Run the following command
+
+```bash
+pnpm test
+```
+
+To see the code coverage
+
+```bash
+pnpm test:coverage
+```

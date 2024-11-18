@@ -95,3 +95,17 @@ Cada usuário tem uma carteira para transações. O sistema deve garantir segura
 
 2. A API estará acessível em <http://localhost:3333>
 3. A documentação da API (swagger) estará acessível em <http://localhost:3333/api/docs>
+
+### Rodando Testes
+
+Execute o seguinte comando
+
+```bash
+pnpm test
+```
+
+Para ver a cobertura de código
+
+```bash
+pnpm test:coverage
+```
