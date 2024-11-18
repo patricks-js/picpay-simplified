@@ -36,7 +36,7 @@ Cada usuário tem uma carteira para transações. O sistema deve garantir segura
 ### Requisitos
 
 - [x] O usuário pode criar uma conta como cliente ou lojista
-- [ ] O usuário pode autenticar-se com e-mail e senha
+- [x] O usuário pode autenticar-se com e-mail e senha
 - [x] O histórico de transações está disponível para todos os usuários
 - [x] Clientes podem transferir dinheiro para outros usuários (clientes ou lojistas)
 - [x] Transferências são restritas a clientes com saldo suficiente

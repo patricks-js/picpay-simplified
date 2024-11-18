@@ -36,7 +36,7 @@ Each user has a wallet for transactions. The system ensures security, validation
 ### Requirements
 
 - [x] User can create an account as customer or merchant
-- [ ] User can authenticate with email & password
+- [x] User can authenticate with email & password
 - [x] Transaction history is available for all users
 - [x] Customers can transfer money to other users (customers or merchants)
 - [x] Transfers are restricted to customers with sufficient balance
