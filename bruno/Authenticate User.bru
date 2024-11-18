@@ -1,0 +1,18 @@
+meta {
+  name: Authenticate User
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{base_url}}/users/authenticate
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "patrick2@gmail.com",
+    "password": "password"
+  }
+}

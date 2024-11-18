@@ -1,5 +1,6 @@
 import { db } from "@/db";
 import { transactions, users } from "@/db/schema";
+import { verifyJwt } from "@/middlewares/verify-jwt";
 import { eq, sql } from "drizzle-orm";
 import type { FastifyInstance } from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
@@ -9,6 +10,7 @@ export async function transactionRoutes(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
     "/",
     {
+      onRequest: [verifyJwt],
       schema: {
         body: z.object({
           amount: z.number().positive(),

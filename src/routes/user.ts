@@ -1,9 +1,11 @@
 import { db } from "@/db";
 import { users } from "@/db/schema";
+import { verifyJwt } from "@/middlewares/verify-jwt";
 import bcrypt from "bcryptjs";
 import { eq, or, sql } from "drizzle-orm";
 import type { FastifyInstance } from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
+import * as jose from "jose";
 import { z } from "zod";
 
 export async function userRoutes(app: FastifyInstance) {
@@ -67,9 +69,82 @@ export async function userRoutes(app: FastifyInstance) {
     },
   );
 
+  app.withTypeProvider<ZodTypeProvider>().post(
+    "/authenticate",
+    {
+      schema: {
+        body: z.object({
+          email: z.string().email(),
+          password: z.string(),
+        }),
+      },
+    },
+    async (request, reply) => {
+      const { email, password } = request.body;
+
+      const [user] = await db
+        .select({
+          id: users.id,
+          fullName: sql /*sql*/`first_name || ' ' || surname`,
+          email: users.email,
+          role: users.role,
+          password: users.passwordHash,
+        })
+        .from(users)
+        .where(eq(users.email, email));
+
+      if (!user) {
+        return reply.status(400).send({
+          statusCode: 400,
+          error: "InvalidCredentialsError",
+          message: "Invalid credentials",
+        });
+      }
+
+      const passwordMatch = await bcrypt.compare(password, user.password);
+
+      if (!passwordMatch) {
+        return reply.status(400).send({
+          statusCode: 400,
+          error: "InvalidCredentialsError",
+          message: "Invalid credentials",
+        });
+      }
+
+      const payload = {
+        id: user.id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+      };
+
+      const protectedHeader = {
+        alg: "HS256",
+        typ: "JWT",
+      };
+
+      const jwt = await new jose.SignJWT(payload)
+        .setProtectedHeader(protectedHeader)
+        .setIssuedAt()
+        .setIssuer("urn:example:issuer")
+        .setAudience("urn:example:audience")
+        .setExpirationTime("15m")
+        .sign(
+          new TextEncoder().encode(
+            "Yzo59+j8crfIEsR91hiBQBNSGdUx2uwmI+ZSa8fRtb8=",
+          ),
+        );
+
+      return {
+        token: jwt,
+      };
+    },
+  );
+
   app.withTypeProvider<ZodTypeProvider>().patch(
     "/:userId/balance",
     {
+      onRequest: [verifyJwt],
       schema: {
         body: z.object({
           amount: z.number().positive(),
@@ -114,7 +189,7 @@ export async function userRoutes(app: FastifyInstance) {
     },
   );
 
-  app.get("/", async () => {
+  app.get("/", { onRequest: [verifyJwt] }, async () => {
     const returnedUsers = await db
       .select({
         id: users.id,
