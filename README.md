@@ -4,16 +4,16 @@
 
 The goal of [this challenge](https://github.com/PicPay/picpay-desafio-backend) is implement a simplified version of PicPay service. It should be possible to **perform transfers between users**. This project adheres to **RESTful** principles and incorporates **clean code** practices, **observability**, and **SOLID**.
 
-## Project Overview
+## 📝 Project Overview
 
 PicPay Simplified is a payment service that allows users to **transfer** and **deposit money**. It supports two types of users:
 
 - **Customer:** Can send and receive money.
 - **Merchants:** Can only receive money.
 
-Each user has a wallet for transactions. The system ensures security, validation, and reliability during all financial operations.
+Each user has a wallet for transactions. The system ensures **security**, **validation**, and **reliability** during all financial operations.
 
-### Technologies Used
+### 🛠️ Technologies Used
 
 - **Programming Language:** TypeScript
 - **Framework:** Fastify
@@ -23,17 +23,17 @@ Each user has a wallet for transactions. The system ensures security, validation
 - **CI/CD:** GitHub Actions
 - **Testing:** Vitest, supertest and Bruno for API testing
 
-### Business Rules
+### 📋 Business Rules
 
 - Email and CPF/CNPJ must be uniques
 - Customers can receive and perform transfers
 - Merchant only receive transfers
 - Balance must be sufficient before transfers
-- All transfers are transactions, if any error occurs, the operations is reverted
+- Every transfer operation is wrapped in a database transaction to ensure atomicity. In case of an error, the system reverts all operations to maintain consistency.
 - Transfers must be authorized with an [external authorization service](https://util.devi.tools/api/v2/authorize) (GET)
 - Users should receive a notification when a transfer is completed with a [external notification service](https://util.devi.tools/api/v1/notify) (POST)
 
-### Requirements
+### ✅ Requirements
 
 - [x] User can create an account as customer or merchant
 - [x] User can authenticate with email & password
@@ -45,14 +45,14 @@ Each user has a wallet for transactions. The system ensures security, validation
 - [ ] Users should receive notifications (e.g., email or SMS) upon receiving a transfer
 - [x] Transfers must be reversible in case of any failure
 
-## Setup Instructions
+## ⚙️ Setup Instructions
 
-### Prerequisites
+### 📌 Prerequisites
 
 - Docker & Docker Compose
 - Node v20+ with `pnpm` as package manager
 
-### Installation
+### 🚀 Installation
 
 1. **Clone the repository:**
 
@@ -85,7 +85,7 @@ Each user has a wallet for transactions. The system ensures security, validation
     pnpm db:seed
     ```
 
-### Usage
+### 💻 Usage
 
 1. Start the application running:
 
@@ -96,7 +96,7 @@ Each user has a wallet for transactions. The system ensures security, validation
 2. The API will be accessible at <http://localhost:3333>
 3. The API documentation (swagger) will be accessible at <http://localhost:3333/api/docs>
 
-### Running Tests
+### 🧪 Running Tests
 
 Run the following command
 
@@ -110,10 +110,10 @@ To see the code coverage
 pnpm test:coverage
 ```
 
-## Proposed Improvements
+## 🌟 Proposed Improvements
 
-- Error handling with better messages and semantic status code
-- Enhance monitoring with detailed transaction metrics
-- Implement API rate limiting and request throttling for security
-- Introduce advanced caching strategies for high-volume transactions
-- Optimize database queries with indexes and partitioning.
+- **Error Handling:** Enhance error messages and use semantic status codes.
+- **Monitoring:** Add detailed transaction metrics for observability.
+- **Rate Limiting:** Implement API rate limiting and request throttling for security.
+- **Database Optimization:** Improve query performance with indexes and partitioning.
+- **Caching:** Introduce caching strategies for high-volume transactions.

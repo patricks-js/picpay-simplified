@@ -2,18 +2,18 @@
 
 [🇺🇸 English version](README.md)
 
-O objetivo desse desafio é implementar uma versão simplificada do serviço principal do PicPay. Deve ser possível realizar transferências entre usuários. Este projeto adere aos princípios **RESTful** e incorpora práticas de **código limpo**, **observabilidade** e **SOLID**.
+O objetivo deste [desafio](https://github.com/PicPay/picpay-desafio-backend) é implementar uma versão simplificada do serviço do PicPay. Deve ser possível **realizar transferências entre usuários**. Este projeto segue os princípios **RESTful**, incorporando práticas de **código limpo**, **observabilidade** e **SOLID**.
 
-## Visão Geral do Projeto
+## 📝 Visão Geral do Projeto
 
-O PicPay simplificado é um serviço de pagamento que permite usuários fazerem transferências and deposito de dinheiro. Existem dois tipos de usuários:
+PicPay Simplificado é um serviço de pagamento que permite aos usuários **transferir** e **depositar dinheiro**. Ele suporta dois tipos de usuários:
 
-- **Cliente:** pode enviar e receber dinheiro
-- **Lojista:** pode apenas receber dinheiro
+- **Cliente:** Pode enviar e receber dinheiro.
+- **Lojista:** Pode apenas receber dinheiro.
 
-Cada usuário tem uma carteira para transações. O sistema deve garantir segurança, validação e resiliência durante todas as operações financeiras.
+Cada usuário possui uma carteira para realizar transações. O sistema garante **segurança**, **validação** e **confiabilidade** durante todas as operações financeiras.
 
-### Tecnologias Usadas
+### 🛠️ Tecnologias Utilizadas
 
 - **Linguagem de Programação:** TypeScript
 - **Framework:** Fastify
@@ -21,73 +21,73 @@ Cada usuário tem uma carteira para transações. O sistema deve garantir segura
 - **Conteinerização:** Docker & Docker Compose
 - **Documentação:** Swagger/OpenAPI
 - **CI/CD:** GitHub Actions
-- **Testes:** Vitest, Supertest e Bruno for API testing
+- **Testes:** Vitest, supertest e Bruno para testes de API
 
-### Business Rules
+### 📋 Regras de Negócio
 
 - Email e CPF/CNPJ devem ser únicos
 - Clientes podem receber e realizar transferências
-- Lojistas apenas recebem transferências
-- O saldo deve ser suficiente antes de transferências
-- Todas as transferências são transactions, ou seja, em caso de erro, a operação é revertida
-- Transferências devem ser autorizadas previamente com um [serviço de autorização externo](https://util.devi.tools/api/v2/authorize) (GET)
-- Usuários devem receber uma notificação quando a transferência é completa, usando um [serviço de notificação externo](https://util.devi.tools/api/v1/notify) (POST)
+- Lojistas podem apenas receber transferências
+- O saldo deve ser suficiente antes de realizar transferências
+- Toda operação de transferência é envolvida em uma transação no banco de dados para garantir atomicidade. Em caso de erro, o sistema reverte todas as operações para manter a consistência.
+- Transferências devem ser autorizadas por um [serviço externo de autorização](https://util.devi.tools/api/v2/authorize) (GET)
+- Os usuários devem receber uma notificação quando uma transferência for concluída, utilizando um [serviço externo de notificações](https://util.devi.tools/api/v1/notify) (POST)
 
-### Requisitos
+### ✅ Requisitos
 
-- [x] O usuário pode criar uma conta como cliente ou lojista
-- [x] O usuário pode autenticar-se com e-mail e senha
-- [x] O histórico de transações está disponível para todos os usuários
+- [x] Usuário pode criar uma conta como cliente ou lojista
+- [x] Usuário pode autenticar-se com email e senha
+- [x] Histórico de transações disponível para todos os usuários
 - [x] Clientes podem transferir dinheiro para outros usuários (clientes ou lojistas)
 - [x] Transferências são restritas a clientes com saldo suficiente
 - [x] Todas as transferências devem ser autorizadas por um serviço externo
-- [x] Lojistas são limitados a apenas receber transferências
-- [ ] Usuários devem receber notificações (e.g., e-mail ou SMS) ao receber uma transferência
+- [x] Lojistas estão limitados a apenas receber transferências
+- [ ] Usuários devem receber notificações (por exemplo, email ou SMS) ao receber uma transferência
 - [x] Transferências devem ser reversíveis em caso de falha
 
-## Instruções de Configuração
+## ⚙️ Instruções de Configuração
 
-### Pré-requisitos
+### 📌 Pré-requisitos
 
 - Docker & Docker Compose
 - Node v20+ com `pnpm` como gerenciador de pacotes
 
-### Instalação
+### 🚀 Instalação
 
-1. **Clonar o repositório:**
+1. **Clone o repositório:**
 
     ```bash
     git clone https://github.com/patricks-js/picpay-simplified.git
     cd picpay-simplified
     ```
 
-2. **Instalar as dependências:**
+2. **Instale as dependências:**
 
     ```bash
     pnpm install
     ```
 
-3. **Iniciar os serviços:**
+3. **Inicie os serviços:**
 
     ```bash
     pnpm services:up
     ```
 
-4. **Executar as migrações do banco de dados:**
+4. **Execute as migrações do banco de dados:**
 
     ```bash
     pnpm db:migrate
     ```
 
-5. **Povoar o banco de dados:**
+5. **Popule o banco de dados com alguns dados:**
 
     ```bash
     pnpm db:seed
     ```
 
-### Rodando o Projeto
+### 💻 Uso
 
-1. Iniciar a aplicação rodando:
+1. Inicie a aplicação executando:
 
     ```bash
     pnpm dev
@@ -96,24 +96,24 @@ Cada usuário tem uma carteira para transações. O sistema deve garantir segura
 2. A API estará acessível em <http://localhost:3333>
 3. A documentação da API (swagger) estará acessível em <http://localhost:3333/api/docs>
 
-### Rodando Testes
+### 🧪 Executando Testes
 
-Execute o seguinte comando
+Execute o seguinte comando:
 
 ```bash
 pnpm test
 ```
 
-Para ver a cobertura de código
+Para ver a cobertura de código:
 
 ```bash
 pnpm test:coverage
 ```
 
-## Propostas de Melhoria
+## 🌟 Melhorias Propostas
 
-- Tratamento de erros com mensagens melhores e status code semânticos
-- Aprimoramento do monitoramento com métricas detalhadas das transações
-- Implementar limitação de taxa de API e limitação de solicitações para segurança
-- Introduzir estratégias avançadas de cache para transações de alto volume
-- Otimizar as consultas ao banco de dados com índices e particionamento.
+- **Tratamento de Erros:** Melhorar mensagens de erro e utilizar códigos de status semânticos.
+- **Monitoramento:** Adicionar métricas detalhadas de transações para observabilidade.
+- **Limitação de Taxa:** Implementar limitação de taxa na API e controle de solicitações para maior segurança.
+- **Otimização do Banco de Dados:** Melhorar o desempenho de consultas com índices e particionamento.
+- **Cache:** Introduzir estratégias de cache para transações de alto volume.
