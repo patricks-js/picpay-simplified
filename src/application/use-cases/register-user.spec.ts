@@ -116,31 +116,28 @@ describe("Use Case -> Register User", () => {
     );
   });
 
-  it.todo(
-    "should throw an error if user already exists with same document (CPF/CNPJ)",
-    async () => {
-      // Arrange
-      userRepository.create({
-        firstName: "John 2",
-        surname: "Doe 2",
-        email: "john2.doe@mail.com",
-        document: "12345678911",
-        passwordHash: "password",
-        type: UserType.Customer,
-      });
-      const insertUser = {
-        firstName: "John",
-        surname: "Doe",
-        email: "john.doe@mail.com",
-        document: "12345678911",
-        password: "password",
-        type: UserType.Customer,
-      };
+  it("should throw an error if user already exists with same document (CPF/CNPJ)", async () => {
+    // Arrange
+    userRepository.create({
+      firstName: "John 2",
+      surname: "Doe 2",
+      email: "john2.doe@mail.com",
+      document: "12345678911",
+      passwordHash: "password",
+      type: UserType.Customer,
+    });
+    const insertUser = {
+      firstName: "John",
+      surname: "Doe",
+      email: "john.doe@mail.com",
+      document: "12345678911",
+      password: "password",
+      type: UserType.Customer,
+    };
 
-      // Act
-      await expect(sut.execute(insertUser)).rejects.toThrow(
-        UserAlreadyExistsError,
-      );
-    },
-  );
+    // Act
+    await expect(sut.execute(insertUser)).rejects.toThrow(
+      UserAlreadyExistsError,
+    );
+  });
 });
