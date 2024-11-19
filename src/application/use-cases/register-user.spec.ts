@@ -7,7 +7,7 @@ import { UserType } from "@/domain/entities/user";
 import type { IUserRepository } from "@/domain/repositories/user-repository";
 import { InMemoryUserRepository } from "@/infra/repositories/in-memory/in-memory-user-repository";
 
-describe("Use Case -> Register User", () => {
+describe("Use Case -> Register User Use Case", () => {
   let userRepository: IUserRepository;
   let sut: RegisterUserUseCase;
 

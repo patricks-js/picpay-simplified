@@ -12,7 +12,7 @@ const mockGenerateTokenGateway: IGenerateTokenGateway = {
   execute: vi.fn().mockResolvedValue({ token: "token" }),
 };
 
-describe("Use Case -> Authenticate", () => {
+describe("Use Case -> Authenticate Use Case", () => {
   let userRepository: IUserRepository;
   let generateTokenGateway: IGenerateTokenGateway;
   let sut: AuthenticateUseCase;
