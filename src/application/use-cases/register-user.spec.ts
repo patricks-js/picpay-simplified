@@ -37,7 +37,28 @@ describe("Use Case -> Register User", () => {
     );
   });
 
-  it.todo("should be able to register a new user as a merchant");
+  it("should be able to register a new user as a merchant", async () => {
+    // Arrange
+    const insertUser = {
+      firstName: "John",
+      surname: "Doe",
+      email: "john.doe@mail.com",
+      document: "12345678911",
+      password: "password",
+      type: UserType.Merchant,
+    };
+
+    // Act
+    const { user } = await sut.execute(insertUser);
+
+    // Assertion
+    expect(user.type).toEqual(UserType.Merchant);
+    expect(user).toEqual(
+      expect.objectContaining({
+        id: expect.any(String),
+      }),
+    );
+  });
   it.todo("should ensure that user's password is encrypted");
   it.todo("should throw an error if user already exists with same email");
   it.todo(
