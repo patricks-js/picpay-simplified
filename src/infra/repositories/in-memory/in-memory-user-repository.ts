@@ -1,4 +1,8 @@
-import type { CreateUserParams, User } from "@/domain/entities/user";
+import type {
+  CreateUserParams,
+  UpdateUserParams,
+  User,
+} from "@/domain/entities/user";
 import type {
   IUserRepository,
   UserFindByParams,
@@ -47,10 +51,7 @@ export class InMemoryUserRepository implements IUserRepository {
     return newItem;
   }
 
-  async update(
-    id: string,
-    params: Partial<Pick<User, "firstName" | "surname">>,
-  ): Promise<User> {
+  async update(id: string, params: UpdateUserParams): Promise<User> {
     const item = await this.findById(id);
 
     if (!item) {
