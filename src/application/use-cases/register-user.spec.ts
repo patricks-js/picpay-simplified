@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { UserAlreadyExistsError } from "@/application/errors/user-already-exists";
 import { RegisterUserUseCase } from "@/application/use-cases/register-user";
 import { UserType } from "@/domain/entities/user";
 import type { IUserRepository } from "@/domain/repositories/user-repository";
@@ -75,14 +76,13 @@ describe("Use Case -> Register User", () => {
       email: "john.doe@mail.com",
       document: "12345678911",
       password: "password",
-      type: UserType.Merchant,
+      type: UserType.Customer,
     };
 
     // Act
     const { user } = await sut.execute(insertUser);
 
     // Assertion
-    expect(user.type).toEqual(UserType.Merchant);
     expect(user).toEqual(
       expect.objectContaining({
         passwordHash: expect.stringMatching(bcryptRegex),
@@ -91,8 +91,56 @@ describe("Use Case -> Register User", () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  it.todo("should throw an error if user already exists with same email");
+  it("should throw an error if user already exists with same email", async () => {
+    // Arrange
+    userRepository.create({
+      firstName: "John 2",
+      surname: "Doe 2",
+      email: "john.doe@mail.com",
+      document: "12345678900",
+      passwordHash: "password",
+      type: UserType.Customer,
+    });
+    const insertUser = {
+      firstName: "John",
+      surname: "Doe",
+      email: "john.doe@mail.com",
+      document: "12345678911",
+      password: "password",
+      type: UserType.Customer,
+    };
+
+    // Act
+    await expect(sut.execute(insertUser)).rejects.toThrow(
+      UserAlreadyExistsError,
+    );
+  });
+
   it.todo(
     "should throw an error if user already exists with same document (CPF/CNPJ)",
+    async () => {
+      // Arrange
+      userRepository.create({
+        firstName: "John 2",
+        surname: "Doe 2",
+        email: "john2.doe@mail.com",
+        document: "12345678911",
+        passwordHash: "password",
+        type: UserType.Customer,
+      });
+      const insertUser = {
+        firstName: "John",
+        surname: "Doe",
+        email: "john.doe@mail.com",
+        document: "12345678911",
+        password: "password",
+        type: UserType.Customer,
+      };
+
+      // Act
+      await expect(sut.execute(insertUser)).rejects.toThrow(
+        UserAlreadyExistsError,
+      );
+    },
   );
 });

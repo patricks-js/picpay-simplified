@@ -2,6 +2,7 @@ import type { CreateUserParams, User } from "@/domain/entities/user";
 import type { UseCase } from "@/domain/interfaces/use-case";
 import type { IUserRepository } from "@/domain/repositories/user-repository";
 import bcrypt from "bcryptjs";
+import { UserAlreadyExistsError } from "../errors/user-already-exists";
 
 export type RegisterUserInput = Omit<CreateUserParams, "passwordHash"> & {
   password: string;
@@ -25,7 +26,7 @@ export class RegisterUserUseCase
     const userFound = userByEmail || userByDocument;
 
     if (userFound) {
-      throw new Error("User already exists.");
+      throw new UserAlreadyExistsError();
     }
 
     const passwordHash = await bcrypt.hash(input.password, 7);
