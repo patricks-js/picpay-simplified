@@ -61,6 +61,21 @@ Each user has a wallet for transactions. The system ensures **security**, **vali
 - [ ] Users should receive notifications (e.g., email or SMS) upon receiving a transfer
 - [x] Transfers must be reversible in case of any failure
 
+## ✨ Features
+
+- [ ] **Secure transfers** between users.
+- [x] Wallet **balance validation** before transactions.
+- [x] Integration with external **authorization service** for validating transfers.
+- [ ] **Notifications** for payees using a mocked external service.
+- [x] **Rollback** mechanism for failed transactions.
+- [ ] **Clean code** following **SOLID** principles.
+- [ ] **Observability** with logging and monitoring.
+- [ ] **Scalable** and **decoupled** architecture.
+- [ ] **RESTful** API with Swagger documentation.
+- [ ] Support for **relational** and **non-relational** databases.
+- [ ] **Dockerized environment** for consistent deployment.
+- [ ] Automated **CI/CD** pipelines.
+
 ## ⚙️ Setup Instructions
 
 ### 📌 Prerequisites

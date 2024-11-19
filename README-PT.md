@@ -61,6 +61,21 @@ Cada usuário possui uma carteira para realizar transações. O sistema garante 
 - [ ] Usuários devem receber notificações (por exemplo, email ou SMS) ao receber uma transferência
 - [x] Transferências devem ser reversíveis em caso de falha
 
+## ✨ Funcionalidades
+
+- [ ] **Transferências seguras** entre usuários.
+- [x] Validação do **saldo da carteira** antes de transações.
+- [x] Integração com serviço externo de **autorização** para validação de transferências.
+- [ ] **Notificações** para beneficiários usando um serviço externo simulado.
+- [x] Mecanismo de **rollback** para transações com falha.
+- [ ] **Código limpo** seguindo os princípios **SOLID**.
+- [ ] **Observabilidade** com logs e monitoramento.
+- [ ] Arquitetura **escalável** e **desacoplada**.
+- [ ] API **RESTful** com documentação no Swagger.
+- [ ] Suporte para bancos de dados **relacionais** e **não relacionais**.
+- [ ] Ambiente **dockerizado** para implantação consistente.
+- [ ] Pipelines automatizados de **CI/CD**.
+
 ## ⚙️ Instruções de Configuração
 
 ### 📌 Pré-requisitos
