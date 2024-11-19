@@ -12,7 +12,11 @@
     "format": "biome check --write .",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "test": "vitest run",
+    "test:dev": "vitest dev",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
@@ -28,9 +32,12 @@
     "@biomejs/biome": "1.9.4",
     "@types/bcryptjs": "2.4.6",
     "@types/node": "22.9.0",
+    "@vitest/coverage-istanbul": "2.1.5",
     "drizzle-kit": "0.28.1",
     "tsup": "8.3.5",
     "tsx": "4.19.2",
-    "typescript": "5.6.3"
+    "typescript": "5.6.3",
+    "vite-tsconfig-paths": "5.1.2",
+    "vitest": "2.1.5"
   }
 }
