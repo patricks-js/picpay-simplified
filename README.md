@@ -4,6 +4,19 @@
 
 The goal of [this challenge](https://github.com/PicPay/picpay-desafio-backend) is implement a simplified version of PicPay service. It should be possible to **perform transfers between users**. This project adheres to **RESTful** principles and incorporates **clean code** practices, **observability**, and **SOLID**.
 
+## 📌 Table of Contents
+
+- [Project Overview](#-project-overview)
+  - [Technologies Used](#️-technologies-used)
+  - [Business Rules](#-business-rules)
+  - [Requirements](#-requirements)
+- [Setup Instructions](#️-setup-instructions)
+  - [Prerequisites](#-prerequisites)
+  - [Installation](#-installation)
+  - [Usage](#-usage)
+  - [Running Tests](#-running-tests)
+- [Proposed Improvements](#-proposed-improvements)
+
 ## 📝 Project Overview
 
 PicPay Simplified is a payment service that allows users to **transfer** and **deposit money**. It supports two types of users:
