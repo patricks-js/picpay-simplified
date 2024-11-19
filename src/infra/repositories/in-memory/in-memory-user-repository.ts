@@ -1,9 +1,18 @@
 import type { CreateUserParams, User } from "@/domain/entities/user";
-import type { IUserRepository } from "@/domain/repositories/user-repository";
+import type {
+  IUserRepository,
+  UserFindByParams,
+} from "@/domain/repositories/user-repository";
 import { randomUUID } from "node:crypto";
 
 export class InMemoryUserRepository implements IUserRepository {
   #items: User[] = [];
+
+  async findBy(params: UserFindByParams): Promise<User | null> {
+    return (
+      this.#items.find((item) => item[params.field] === params.value) ?? null
+    );
+  }
 
   async findByEmail(email: string): Promise<User | null> {
     return this.#items.find((item) => item.email === email) ?? null;
