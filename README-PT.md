@@ -31,9 +31,12 @@ Cada usuário possui uma carteira para realizar transações. O sistema garante 
 - **Linguagem de Programação:** TypeScript
 - **Framework:** Fastify
 - **Banco de Dados:** PostgreSQL
+- **Cache:** Redis (Proposto)
 - **Conteinerização:** Docker & Docker Compose
 - **Documentação:** Swagger/OpenAPI
 - **CI/CD:** GitHub Actions
+- **Messaging:** RabbitMQ (Proposto)
+- **Observabilidade:** Prometheus, Grafana (Proposto)
 - **Testes:** Vitest, supertest e Bruno para testes de API
 
 ### 📋 Regras de Negócio

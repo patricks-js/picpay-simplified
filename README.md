@@ -31,9 +31,12 @@ Each user has a wallet for transactions. The system ensures **security**, **vali
 - **Programming Language:** TypeScript
 - **Framework:** Fastify
 - **Database:** PostgreSQL
+- **Caching:** Redis (Proposed)
 - **Containerization:** Docker & Docker Compose
 - **Documentation:** Swagger/OpenAPI
 - **CI/CD:** GitHub Actions
+- **Messaging:** RabbitMQ (Proposed)
+- **Monitoring:** Prometheus, Grafana (Proposed)
 - **Testing:** Vitest, supertest and Bruno for API testing
 
 ### 📋 Business Rules
