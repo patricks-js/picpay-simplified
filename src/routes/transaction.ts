@@ -6,6 +6,8 @@ import type { FastifyInstance } from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 
+const notificationQueue = [] as string[];
+
 export async function transactionRoutes(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
     "/",
@@ -122,6 +124,19 @@ export async function transactionRoutes(app: FastifyInstance) {
           message: "Transaction validation is temporally unavailable.",
         });
       }
+
+      const notificationServiceResponse = await fetch(
+        "https://util.devi.tools/api/v1/notify",
+        {
+          method: "POST",
+        },
+      );
+
+      if (!notificationServiceResponse.ok) {
+        notificationQueue.push(notificationServiceResponse.url);
+      }
+
+      console.log(notificationQueue);
 
       return {
         transactionId: transactionSuccess.transactionId,
