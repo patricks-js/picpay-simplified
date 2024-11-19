@@ -1,8 +1,9 @@
+import bcrypt from "bcryptjs";
+
+import { UserAlreadyExistsError } from "@/application/errors/user-already-exists";
 import type { CreateUserParams, User } from "@/domain/entities/user";
 import type { UseCase } from "@/domain/interfaces/use-case";
 import type { IUserRepository } from "@/domain/repositories/user-repository";
-import bcrypt from "bcryptjs";
-import { UserAlreadyExistsError } from "../errors/user-already-exists";
 
 export type RegisterUserInput = Omit<CreateUserParams, "passwordHash"> & {
   password: string;
