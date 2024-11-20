@@ -62,6 +62,12 @@ Each user has a wallet for transactions. The system ensures **security**, **vali
 - [ ] Users should receive notifications (e.g., email or SMS) upon receiving a transfer
 - [x] Transfers must be reversible in case of any failure
 
+## 📊 ER Diagram (Entity-Relationship)
+
+The following diagram represents the database structure used in this project:
+
+![ER Diagram](.github/assets/er-diagram.png)
+
 ## ✨ Features
 
 - [ ] **Secure transfers** between users.

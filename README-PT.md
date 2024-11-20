@@ -62,6 +62,12 @@ Cada usuário possui uma carteira para realizar transações. O sistema garante 
 - [ ] Usuários devem receber notificações (por exemplo, email ou SMS) ao receber uma transferência
 - [x] Transferências devem ser reversíveis em caso de falha
 
+## 📊 Diagrama ER (Entidade-Relacionamento)
+
+O diagrama abaixo representa a estrutura do banco de dados usando neste projeto:
+
+![ER Diagram](.github/assets/er-diagram.png)
+
 ## ✨ Funcionalidades
 
 - [ ] **Transferências seguras** entre usuários.
