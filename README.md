@@ -10,6 +10,7 @@ The goal of [this challenge](https://github.com/PicPay/picpay-desafio-backend) i
   - [Technologies Used](#️-technologies-used)
   - [Business Rules](#-business-rules)
   - [Requirements](#-requirements)
+- [ER Diagram](#-er-diagram-entity-relationship)
 - [Features](#-features)
 - [Setup Instructions](#️-setup-instructions)
   - [Prerequisites](#-prerequisites)

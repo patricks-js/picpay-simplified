@@ -10,6 +10,7 @@ O objetivo deste [desafio](https://github.com/PicPay/picpay-desafio-backend) é 
   - [Tecnologias Utilizadas](#️-tecnologias-utilizadas)
   - [Regras de Negócio](#-regras-de-negócio)
   - [Requisitos](#-requisitos)
+- [Diagrama ER](#-diagrama-er-entidade-relacionamento)
 - [Funcionalidades](#-funcionalidades)
 - [Instruções de Configuração](#️-instruções-de-configuração)
   - [Pré-requisitos](#-pré-requisitos)
