@@ -17,6 +17,10 @@ export class InMemoryWalletRepository implements IWalletRepository {
     return this.#items.find((item) => item.id === id) ?? null;
   }
 
+  async findByUserId(userId: string): Promise<Wallet | null> {
+    return this.#items.find((item) => item.userId === userId) ?? null;
+  }
+
   async create(params: CreateWalletParams): Promise<Wallet> {
     const itemPosition = this.#items.push({
       ...params,

@@ -6,4 +6,6 @@ import type {
 import type { IRepository } from "@/domain/interfaces/repository";
 
 export interface IWalletRepository
-  extends IRepository<Wallet, string, CreateWalletParams, UpdateWalletParams> {}
+  extends IRepository<Wallet, string, CreateWalletParams, UpdateWalletParams> {
+  findByUserId(userId: string): Promise<Wallet | null>;
+}
