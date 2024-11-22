@@ -2,32 +2,19 @@ import type { UseCase } from "@/domain/interfaces/use-case";
 import type { IWalletRepository } from "@/domain/repositories/wallet-repository";
 import { addBalance } from "@/utils/balance-helper";
 import { ResourceNotFoundError } from "../errors/resource-not-found";
-import type { ValidateUserExists } from "./validate-user-exists";
 
 interface AddMoneyToWalletInput {
   amount: number;
-  userId: string;
+  walletId: string;
 }
 
 export class AddMoneyToWalletUseCase
   implements UseCase<AddMoneyToWalletInput, void>
 {
-  constructor(
-    private readonly walletRepository: IWalletRepository,
-    private readonly validateUserExists: ValidateUserExists,
-  ) {}
+  constructor(private readonly walletRepository: IWalletRepository) {}
 
   async execute(input: AddMoneyToWalletInput): Promise<void> {
-    const userExists = await this.validateUserExists.execute({
-      field: "id",
-      value: input.userId,
-    });
-
-    if (!userExists) {
-      throw new ResourceNotFoundError("User");
-    }
-
-    const wallet = await this.walletRepository.findByUserId(input.userId);
+    const wallet = await this.walletRepository.findById(input.walletId);
 
     if (!wallet) {
       throw new ResourceNotFoundError("Wallet");
