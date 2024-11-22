@@ -1,4 +1,6 @@
 import { UserType } from "@/domain/entities/user";
+import { Currencies } from "@/domain/entities/wallet";
+import { makeCreateWalletUseCase } from "@/infra/factories/make-create-wallet";
 import { makeRegisterUserUseCase } from "@/infra/factories/make-register-user";
 import type { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -25,7 +27,15 @@ export async function registerUserController(
     type: UserType[body.type],
   });
 
+  const createWallet = makeCreateWalletUseCase();
+
+  const { wallet } = await createWallet.execute({
+    userId: user.id,
+    currency: Currencies.BRL,
+  });
+
   return reply.status(201).send({
     user,
+    wallet,
   });
 }
