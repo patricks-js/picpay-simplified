@@ -8,5 +8,5 @@
     "*.css": "tailwindcss"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["biomejs", "picpay"]
+  "cSpell.words": ["biomejs", "picpay", "postgresql"]
 }
