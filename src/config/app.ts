@@ -1,7 +1,7 @@
 import fastify from "fastify";
 
-import { userRoutes } from "@/routes/user";
-import { errorHandler } from "./error-handler";
+import { errorHandler } from "@/config/error-handler";
+import { userRoutes } from "@/presentation/routes/user";
 
 export const app = fastify({
   logger: true,

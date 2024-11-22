@@ -1,8 +1,9 @@
+import type { FastifyError, FastifyReply, FastifyRequest } from "fastify";
+import { ZodError } from "zod";
+
 import { InvalidCredentialsError } from "@/application/errors/invalid-credentials";
 import { ResourceNotFoundError } from "@/application/errors/resource-not-found";
 import { UserAlreadyExistsError } from "@/application/errors/user-already-exists";
-import type { FastifyError, FastifyReply, FastifyRequest } from "fastify";
-import { ZodError } from "zod";
 
 export async function errorHandler(
   error: FastifyError,
