@@ -1,5 +1,6 @@
 import type { UseCase } from "@/domain/interfaces/use-case";
 import type { IWalletRepository } from "@/domain/repositories/wallet-repository";
+import { addBalance } from "@/utils/balance-helper";
 import { ResourceNotFoundError } from "../errors/resource-not-found";
 import type { ValidateUserExists } from "./validate-user-exists";
 
@@ -32,10 +33,10 @@ export class AddMoneyToWalletUseCase
       throw new ResourceNotFoundError("Wallet");
     }
 
-    const newBalanceAmount = Number(wallet.balance) + input.amount;
+    const newBalance = addBalance(wallet.balance, input.amount);
 
     await this.walletRepository.update(wallet.id, {
-      balance: String(newBalanceAmount),
+      balance: newBalance,
     });
   }
 }
