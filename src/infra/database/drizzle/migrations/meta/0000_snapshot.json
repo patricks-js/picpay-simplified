@@ -1,6 +1,6 @@
 {
-  "id": "29d04a2e-93c3-43b3-a447-f0a08e591127",
-  "prevId": "ebcd9995-08ec-4e0f-9862-98e3662fe5fa",
+  "id": "0a22588b-3260-4746-b1a7-d256811e319f",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -10,7 +10,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "text",
           "primaryKey": true,
           "notNull": true
         },
@@ -44,22 +44,22 @@
           "primaryKey": false,
           "notNull": true
         },
-        "role": {
-          "name": "role",
+        "type": {
+          "name": "type",
           "type": "user_role",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         },
-        "balance": {
-          "name": "balance",
-          "type": "numeric(14, 2)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'0.00'"
-        },
         "created_at": {
           "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,

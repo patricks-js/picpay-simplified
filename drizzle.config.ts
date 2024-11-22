@@ -1,7 +1,7 @@
-import { env } from "@/env";
+import { env } from "@/config/env";
 import { defineConfig } from "drizzle-kit";
 
-const base = "./src/db";
+const base = "./src/infra/database/drizzle";
 
 export default defineConfig({
   schema: `${base}/schema`,
