@@ -7,7 +7,7 @@ export enum Currencies {
 export interface Wallet {
   id: string;
   userId: string;
-  balance: number;
+  balance: string;
   currency: Currencies;
   createdAt: Date;
   updatedAt: Date;

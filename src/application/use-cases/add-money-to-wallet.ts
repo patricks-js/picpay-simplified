@@ -32,10 +32,10 @@ export class AddMoneyToWalletUseCase
       throw new ResourceNotFoundError("Wallet");
     }
 
-    const newBalanceAmount = wallet.balance + input.amount;
+    const newBalanceAmount = Number(wallet.balance) + input.amount;
 
     await this.walletRepository.update(wallet.id, {
-      balance: newBalanceAmount,
+      balance: String(newBalanceAmount),
     });
   }
 }

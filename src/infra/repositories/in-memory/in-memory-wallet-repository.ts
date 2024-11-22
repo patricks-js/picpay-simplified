@@ -10,7 +10,7 @@ export class InMemoryWalletRepository implements IWalletRepository {
   #items: Wallet[] = [];
 
   async findMany(): Promise<Wallet[]> {
-    return this.#items;
+    throw new Error("Method not implemented");
   }
 
   async findById(id: string): Promise<Wallet | null> {
@@ -25,7 +25,7 @@ export class InMemoryWalletRepository implements IWalletRepository {
     const itemPosition = this.#items.push({
       ...params,
       id: randomUUID(),
-      balance: 0,
+      balance: "0.00",
       createdAt: new Date(),
       updatedAt: new Date(),
     });
