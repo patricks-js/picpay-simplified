@@ -21,7 +21,7 @@ export class AuthenticateUseCase
 {
   constructor(
     private readonly userRepository: IUserRepository,
-    private readonly generateAccessToken: IGenerateTokenGateway,
+    private readonly generateTokenGateway: IGenerateTokenGateway,
   ) {}
 
   async execute(input: AuthenticateInput): Promise<AuthenticateOutput> {
@@ -41,7 +41,7 @@ export class AuthenticateUseCase
       type: user.type,
     };
 
-    const { token } = await this.generateAccessToken.execute(payload);
+    const { token } = await this.generateTokenGateway.execute(payload);
 
     return {
       user,
