@@ -19,11 +19,11 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@paralleldrive/cuid2": "2.2.2",
     "bcryptjs": "2.4.3",
     "dotenv": "16.4.5",
     "drizzle-orm": "0.36.3",
     "fastify": "5.1.0",
-    "fastify-type-provider-zod": "4.0.2",
     "jose": "5.9.6",
     "postgres": "3.4.5",
     "zod": "3.23.8"

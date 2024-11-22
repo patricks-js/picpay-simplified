@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@paralleldrive/cuid2':
+        specifier: 2.2.2
+        version: 2.2.2
       bcryptjs:
         specifier: 2.4.3
         version: 2.4.3
@@ -20,9 +23,6 @@ importers:
       fastify:
         specifier: 5.1.0
         version: 5.1.0
-      fastify-type-provider-zod:
-        specifier: 4.0.2
-        version: 4.0.2(fastify@5.1.0)(zod@3.23.8)
       jose:
         specifier: 5.9.6
         version: 5.9.6
@@ -931,6 +931,13 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
+  '@noble/hashes@1.5.0':
+    resolution: {integrity: sha512-1j6kQFb7QRru7eKN3ZDvRcP13rugwdxZqCjbiAVZfIJwgj2A65UmT4TgARXGlXgnRkORLTDTrO19ZErt7+QXgA==}
+    engines: {node: ^14.21.3 || >=16}
+
+  '@paralleldrive/cuid2@2.2.2':
+    resolution: {integrity: sha512-ZOBkgDwEdoYVlSeRbYYXs0S9MejQofiVYoTbKzy/6GQa39/q5tQU2IX46+shYnUkpEl3wc+J6wRlar7r2EK2xA==}
+
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -1370,12 +1377,6 @@ packages:
 
   fast-uri@3.0.3:
     resolution: {integrity: sha512-aLrHthzCjH5He4Z2H9YZ+v6Ujb9ocRuW6ZzkJQOrTxleEijANq4v1TsaPaVG1PZcuurEzrLcWRyYBYXD5cEiaw==}
-
-  fastify-type-provider-zod@4.0.2:
-    resolution: {integrity: sha512-FDRzSL3ZuoZ+4YDevR1YOinmDKkxOdy3QB9dDR845sK+bQvDroPKhHAXLEAOObDxL7SMA0OZN/A4osrNBTdDTQ==}
-    peerDependencies:
-      fastify: ^5.0.0
-      zod: ^3.14.2
 
   fastify@5.1.0:
     resolution: {integrity: sha512-0SdUC5AoiSgMSc2Vxwv3WyKzyGMDJRAW/PgNsK1kZrnkO6MeqUIW9ovVg9F2UGIqtIcclYMyeJa4rK6OZc7Jxg==}
@@ -1957,11 +1958,6 @@ packages:
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
 
-  zod-to-json-schema@3.23.5:
-    resolution: {integrity: sha512-5wlSS0bXfF/BrL4jPAbz9da5hDlDptdEppYfe+x4eIJ7jioqKG9uUxOwPzqof09u/XeVdrgFu29lZi+8XNDJtA==}
-    peerDependencies:
-      zod: ^3.23.3
-
   zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
@@ -2509,6 +2505,12 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@noble/hashes@1.5.0': {}
+
+  '@paralleldrive/cuid2@2.2.2':
+    dependencies:
+      '@noble/hashes': 1.5.0
+
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
@@ -2924,13 +2926,6 @@ snapshots:
   fast-uri@2.4.0: {}
 
   fast-uri@3.0.3: {}
-
-  fastify-type-provider-zod@4.0.2(fastify@5.1.0)(zod@3.23.8):
-    dependencies:
-      '@fastify/error': 4.0.0
-      fastify: 5.1.0
-      zod: 3.23.8
-      zod-to-json-schema: 3.23.5(zod@3.23.8)
 
   fastify@5.1.0:
     dependencies:
@@ -3494,9 +3489,5 @@ snapshots:
       strip-ansi: 7.1.0
 
   yallist@3.1.1: {}
-
-  zod-to-json-schema@3.23.5(zod@3.23.8):
-    dependencies:
-      zod: 3.23.8
 
   zod@3.23.8: {}
