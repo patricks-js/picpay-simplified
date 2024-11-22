@@ -1,6 +1,6 @@
 {
-  "id": "0a22588b-3260-4746-b1a7-d256811e319f",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "a42ae186-a275-4659-9bea-9cc93655ea6a",
+  "prevId": "0a22588b-3260-4746-b1a7-d256811e319f",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -84,6 +84,69 @@
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
+    },
+    "public.tb_wallets": {
+      "name": "tb_wallets",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "balance": {
+          "name": "balance",
+          "type": "numeric(14, 2)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'0.00'"
+        },
+        "currency": {
+          "name": "currency",
+          "type": "currencies",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "tb_wallets_user_id_tb_users_id_fk": {
+          "name": "tb_wallets_user_id_tb_users_id_fk",
+          "tableFrom": "tb_wallets",
+          "tableTo": "tb_users",
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
     }
   },
   "enums": {
@@ -91,6 +154,11 @@
       "name": "user_role",
       "schema": "public",
       "values": ["customer", "merchant"]
+    },
+    "public.currencies": {
+      "name": "currencies",
+      "schema": "public",
+      "values": ["BRL", "USD", "EUR"]
     }
   },
   "schemas": {},
