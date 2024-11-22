@@ -1,12 +1,12 @@
 import fastify from "fastify";
 
 import { errorHandler } from "@/config/error-handler";
-import { userRoutes } from "@/presentation/routes/user";
+import { routes } from "@/presentation/routes";
 
 export const app = fastify({
   logger: true,
 });
 
-app.register(userRoutes, { prefix: "/api/users" });
+app.register(routes, { prefix: "/api" });
 
 app.setErrorHandler(errorHandler);
