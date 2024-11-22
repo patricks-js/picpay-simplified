@@ -16,6 +16,7 @@ export async function registerUserController(
     document: z.string().min(11).max(14),
     password: z.string(),
     type: z.enum(["Customer", "Merchant"]),
+    currency: z.enum(["BRL", "USD", "EUR"]),
   });
 
   const body = bodySchema.parse(request.body);
@@ -31,7 +32,7 @@ export async function registerUserController(
 
   const { wallet } = await createWallet.execute({
     userId: user.id,
-    currency: Currencies.BRL,
+    currency: Currencies[body.currency],
   });
 
   return reply.status(201).send({
