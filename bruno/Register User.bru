@@ -5,18 +5,19 @@ meta {
 }
 
 post {
-  url: {{base_url}}/users/register
+  url: {{base_url}}/users
   body: json
   auth: none
 }
 
 body:json {
   {
-    "firstName": "2Pac",
-    "surname": "Shaku",
-    "email": "2pac@mail.com",
-    "document": "93847103947",
+    "firstName": "50 Cent",
+    "surname": "50 Centavos",
+    "email": "502centavos@mail.com",
+    "document": "93847107943",
     "password": "password",
-    "type": "Customer"
+    "type": "Customer",
+    "currency": "BRL"
   }
 }
